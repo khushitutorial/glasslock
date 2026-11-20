@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GlassLock</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/liquid-glass.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<main>
+<div class="card">
+<header>
+<img src="assets/logo.svg" width="34" height="34" alt="">
+<b>GlassLock</b>
+<button class="ic" id="theme" aria-label="Toggle light or dark theme">◐</button>
+</header>
+<h1>Secure your files.</h1>
+<p class="sub">Private encryption. Simple recovery.</p>
+<div class="seg" id="seg" data-m="enc" role="tablist">
+<i></i><button role="tab" id="t-enc" aria-selected="true">Encrypt</button><button role="tab" id="t-dec" aria-selected="false">Decrypt</button>
+</div>
+<input type="file" id="fin" hidden>
+<label class="drop" id="drop" for="fin" tabindex="0" role="button" aria-label="Choose a file">
+<strong>Drop your file here</strong><small id="acc">or browse files · any file type</small>
+</label>
+<div class="fi" id="info" hidden><span aria-hidden="true" style="font-size:26px">📄</span><div><p id="fn"></p><small id="fm"></small></div><button class="link" id="rm">Remove</button></div>
+<div id="encf">
+<label for="p1">Password</label>
+<div class="pw"><input type="password" id="p1" autocomplete="new-password"><button class="ic" id="eye" aria-label="Show password" style="width:48px">👁</button></div>
+<div class="meter" aria-hidden="true"><i id="mt"></i></div><p class="hint" id="ml">Use 12 or more characters. A long passphrase works best.</p>
+<label for="p2">Confirm password</label>
+<input type="password" id="p2" autocomplete="new-password">
+</div>
+<div id="decf" hidden>
+<label for="p3">Password</label>
+<input type="password" id="p3" autocomplete="current-password">
+</div>
+<p class="warn" id="warn">If you forget this password, the file cannot be recovered. Nobody can reset it.</p>
+<button class="go" id="go" disabled>Encrypt file</button>
+<div id="prog" hidden><div class="prog"><i></i></div></div>
+<div id="msg" role="status" aria-live="polite"></div>
+<div id="res" hidden></div>
+<div class="sec">Processed on this device · AES-256-GCM · <span id="kdfl">Argon2id</span></div>
+</div>
+<p class="how">Pick a file, set a password, and download the encrypted copy. To recover it, open the .glasslock file here and enter the same password. Nothing is uploaded.</p>
+</main>
+<!-- Argon2id: uses the local copy if present (see README), otherwise the pinned CDN build -->
+<script src="lib/argon2/argon2.umd.min.js"></script>
+<script>if(typeof hashwasm==="undefined"){document.write('<script src="https://cdn.jsdelivr.net/npm/hash-wasm@4.11.0/dist/argon2.umd.min.js"><\/script>')}</script>
+<script src="js/security-utils.js"></script>
+<script src="js/container-format.js"></script>
+<script src="js/key-derivation.js"></script>
+<script src="js/encryption.js"></script>
+<script src="js/decryption.js"></script>
+<script src="js/password-manager.js"></script>
+<script src="js/file-handler.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body></html>
